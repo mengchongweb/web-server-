@@ -23,7 +23,7 @@ const getPostData = (req) => {
                 return 
             }
             resolve(
-                JSON.stringify(postData)
+                JSON.parse(postData)
             )
         })
     })
@@ -43,7 +43,7 @@ const serverHandle = (req, res) => {
 
     // 处理post data
     getPostData(req).then( postData => {
-        req.body = postData
+        req.body = postData;
         // 处理 blog 路由
         const blogData = handleBlogRouter(req, res)
         if (blogData) {
